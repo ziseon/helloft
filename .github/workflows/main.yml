@@ -13,23 +13,23 @@ jobs:
       matrix:
         include:
         - os: 'windows-latest'
-          CMD_BUILD: pyinstaller -F -w --add-data "./resources;resources" main.py
+          CMD_BUILD: pyinstaller -F -w main.py
           OUT_FILE_NAME: main_windows
           OUT_FILE_PATH: dist/main.exe
         - os: 'ubuntu-latest'
-          CMD_BUILD: pyinstaller -F -w --add-data "./resources:resources" main.py
+          CMD_BUILD: pyinstaller -F -w main.py
           OUT_FILE_NAME: main_linux
           OUT_FILE_PATH: dist/main
         - os: 'macos-12'
           CMD_BUILD: >
-              pyinstaller -w --add-data "./resources:resources" main.py &&
+              pyinstaller -w main.py &&
               cd dist/ &&
               tar -cvf main.tar main.app/
           OUT_FILE_NAME: main_macos
           OUT_FILE_PATH: dist/main.tar
         - os: 'macos-12'
           CMD_BUILD: >
-              flet pack --add-data "./resources:resources" main.py &&
+              flet pack main.py &&
               cd dist/ &&
               tar -cvf main.tar main.app/
           OUT_FILE_NAME: main_macos2
